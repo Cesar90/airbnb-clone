@@ -2,8 +2,15 @@ Create ENV => pipenv --python 3
 Create bubble => pipenv shell
 Install Django => pipenv install Django==2.2.5
 Create project => django-admin startproject config
+Run Server => python manage.py runserver
 Run migrations => python manage.py migrate
 Create superuser => python manage.py createsuperuser => {
     user:cesarcordero
     password:cesarcordero
 }
+Create app => django-admin startapp rooms
+Create app => django-admin startapp users
+Create app => django-admin startapp reviews
+Create app => django-admin startapp conversations
+Create app => django-admin startapp lists
+Create app => django-admin startapp reservations
