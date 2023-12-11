@@ -1,0 +1,3 @@
+Create ENV => pipenv --python 3
+Create bubble => pipenv shell
+Install Django => pipenv install Django==2.2.5
