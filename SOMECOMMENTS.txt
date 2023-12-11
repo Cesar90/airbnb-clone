@@ -14,3 +14,6 @@ Create app => django-admin startapp reviews
 Create app => django-admin startapp conversations
 Create app => django-admin startapp lists
 Create app => django-admin startapp reservations
+
+Configure AUTH_USER_MODEL = 'users.User' in settings.py
+Create migrate files => python manage.py makemigrations
