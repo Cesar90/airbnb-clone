@@ -2,3 +2,8 @@ Create ENV => pipenv --python 3
 Create bubble => pipenv shell
 Install Django => pipenv install Django==2.2.5
 Create project => django-admin startproject config
+Run migrations => python manage.py migrate
+Create superuser => python manage.py createsuperuser => {
+    user:cesarcordero
+    password:cesarcordero
+}
