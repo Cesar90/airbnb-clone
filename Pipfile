@@ -7,6 +7,8 @@ name = "pypi"
 django = "==2.2.5"
 
 [dev-packages]
+"flake8" = "==3.7.9"
+black = "==19.10b0"
 
 [requires]
 python_version = "3.9"
