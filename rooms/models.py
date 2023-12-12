@@ -1,3 +1,8 @@
 from django.db import models
+from core import models as core_modules
 
-# Create your models here.
+class Room(core_modules.TimeStampedModel):
+    """
+        Room Model Definition
+    """
+    pass

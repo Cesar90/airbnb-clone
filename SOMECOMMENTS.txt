@@ -18,3 +18,4 @@ Create app => django-admin startapp reservations
 Configure AUTH_USER_MODEL = 'users.User' in settings.py
 Create migrate files => python manage.py makemigrations
 Install pipenv install Pillow==6.2.1
+Create core app => django-admin startapp core
