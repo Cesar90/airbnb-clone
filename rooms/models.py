@@ -49,7 +49,7 @@ class Photo(core_models.TimeStampedModel):
     """
     caption = models.CharField(max_length=80)
     file = models.ImageField()
-    room_field = models.ForeignKey("Room", on_delete=models.CASCADE)
+    room = models.ForeignKey("Room", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.caption

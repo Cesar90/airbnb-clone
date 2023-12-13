@@ -9,4 +9,4 @@ class TimeStampedModel(models.Model):
 
     # This model doesn't go to database
     class Meta:
-        abstract: True
+        abstract = True
