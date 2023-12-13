@@ -35,3 +35,6 @@ class User(AbstractUser):
     language = models.CharField(choices=LANGUAGES_CHOICES, max_length=2,blank=True)
     currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3,blank=True)
     superhost = models.BooleanField(default=False)
+
+    # def __str__(self) -> str:
+    #     return super().__str__()
