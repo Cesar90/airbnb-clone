@@ -46,3 +46,4 @@ run seed of amenities => python manage.py seed_amenities
 run seed of facilities => python manage.py seed_facilities
 Install django_seed => pipenv install django_seed
 run seed of users => python manage.py seed_users --number 50
+run seed of rooms => python manage.py seed_rooms
