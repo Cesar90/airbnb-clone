@@ -101,6 +101,11 @@ class RoomAdmin(admin.ModelAdmin):
 
         filter_horizontal = ("amenities", "facilities", "house_rules")
 
+        def save_model(self, request, obj, form, change):
+                # obj.user = request.user
+                super().save_model(request, obj, form, change)
+
+
         def count_amenities(self, obj):
                 return obj.amenities.count()
         
