@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+{% block page_name %}
+    Home
+{% endblock page_name %}
+{% block content %}
+    {% for room in rooms %}
+        <h1>{{ room.name }} / $ {{ room.price }}</h1>
+    {% endfor %}
+{% endblock content %}
 {% comment %} <h1>
     Hello!
 </h1>
@@ -14,6 +22,3 @@
     I'm ok
     {% endif %}
 </h6> {% endcomment %}
-{% for room in rooms %}
-    <h1>{{ room.name }} / $ {{ room.price }}</h1>
-{% endfor %}
