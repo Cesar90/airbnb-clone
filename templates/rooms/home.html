@@ -1,4 +1,5 @@
-<h1>
+{% extends "base.html" %}
+{% comment %} <h1>
     Hello!
 </h1>
 
@@ -12,4 +13,7 @@
     {% else %}
     I'm ok
     {% endif %}
-</h6>
+</h6> {% endcomment %}
+{% for room in rooms %}
+    <h1>{{ room.name }} / $ {{ room.price }}</h1>
+{% endfor %}
