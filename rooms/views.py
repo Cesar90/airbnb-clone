@@ -14,7 +14,8 @@ def all_rooms(request):
     # print(dir(request.GET.keys()))
     # print(request.GET.keys())
     # print(request.GET.get("page", 1))
-    page = int(request.GET.get("page", 1))
+    page = request.GET.get("page", 1)
+    page = int(page or 1)
     page_size = 10
     limit = page_size * page
     offset = limit - page_size
