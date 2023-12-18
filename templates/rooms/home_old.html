@@ -3,7 +3,7 @@
     Home
 {% endblock page_name %}
 {% block content %}
-    {% for room in rooms.object_list %}
+    {% for room in rooms %}
         <h1>{{ room.name }} / $ {{ room.price }}</h1>
     {% endfor %}
     {% comment %} <h5>
@@ -15,22 +15,18 @@
         </a>
     {% endfor %} {% endcomment %}
     <h5>
-        {% if rooms.has_previous %}
-            <a href="?page={{rooms.number|add:-1}}">
-                Previous
+        {% if page is not 1 %}
+            <a href="?page={{page|add:-1}}">
+                {{page}}
             </a>
         {% endif %}
-
-        Page {{rooms.number}} of {{rooms.paginator.number_pages}}
-
-        {% if rooms.has_next %}
-            <a href="?page={{rooms.number|add:1}}">
-                Next
+        Page {{page}} of {{page_count}}
+        {% if not page == page_count %}
+            <a href="?page={{page|add:1}}">
+                {{page|add:1}}
             </a>
         {% endif %}
-        {% comment %} {% for page in rooms.paginator.page_range %}
-            {{page}}
-        {% endfor %} {% endcomment %}
+        
     </h5>
 {% endblock content %}
 {% comment %} <h1>
