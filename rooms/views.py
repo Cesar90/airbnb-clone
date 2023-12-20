@@ -1,4 +1,5 @@
 from math import ceil
+from django.utils import timezone
 from django.views.generic import ListView
 from datetime import datetime
 from django.shortcuts import render, redirect
@@ -13,6 +14,13 @@ class HomeView(ListView):
     ordering = "created"
     pagination_orphans = 5
     page_kwarg = "page"
+    context_object_name = "rooms"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        now = timezone.now()
+        context["now"] = now
+        return context
 
 
 # Create your views here.
