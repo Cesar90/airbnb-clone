@@ -1,9 +1,19 @@
 from math import ceil
+from django.views.generic import ListView
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponse
 from . import models
+
+class HomeView(ListView):
+    """Homeview Defintion"""
+    model = models.Room
+    paginate_by = 10
+    ordering = "created"
+    pagination_orphans = 5
+    page_kwarg = "page"
+
 
 # Create your views here.
 def all_rooms(request):

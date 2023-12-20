@@ -15,17 +15,17 @@
         </a>
     {% endfor %} {% endcomment %}
     <h5>
-        {% if page.has_previous %}
+        {% if page_obj.has_previous %}
             {% comment %} <a href="?page={{page.number|add:-1}}"> {% endcomment %}
-            <a href="?page={{page.previous_page_number}}">
+            <a href="?page={{page_obj.previous_page_number}}">
                 Previous
             </a>
         {% endif %}
 
-        Page {{page.number}} of {{page.paginator.number_pages}}
+        Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
 
-        {% if page.has_next %}
-            <a href="?page={{page.next_page_number}}">
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">
                 Next
             </a>
         {% endif %}
