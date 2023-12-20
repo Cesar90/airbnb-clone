@@ -1,6 +1,7 @@
 from math import ceil
 from django.utils import timezone
 from django.views.generic import ListView
+from django.shortcuts import render
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
@@ -21,6 +22,10 @@ class HomeView(ListView):
         now = timezone.now()
         context["now"] = now
         return context
+    
+def room_detail(request, pk):
+    print(pk)
+    return render(request, "rooms/detail.html")
 
 
 # Create your views here.
