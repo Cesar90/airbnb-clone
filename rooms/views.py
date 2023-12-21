@@ -1,6 +1,6 @@
 from math import ceil
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.urls import reverse
 from django.http import Http404
 from django.shortcuts import render
@@ -24,6 +24,10 @@ class HomeView(ListView):
         now = timezone.now()
         context["now"] = now
         return context
+    
+class RoomDetail(DetailView):
+    model = models.Room
+    pk_url_kwarg = 'pk'
     
 def room_detail(request, pk):
     try:
