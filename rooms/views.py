@@ -8,6 +8,7 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponse
+from django_countries import countries
 from . import models
 
 class HomeView(ListView):
@@ -30,10 +31,13 @@ class RoomDetail(DetailView):
     pk_url_kwarg = 'pk'
 
 def search(request):
-    city = request.GET.get("city")
+    city = request.GET.get("city", "Anywhere")
     city = str.capitalize(city)
+    room_types = models.RoomType.objects.all()
     return render(request, "rooms/search.html", {
-        "city": city
+        "city": city,
+        "countries":countries,
+        "room_types":room_types
     })
     
 def room_detail(request, pk):
