@@ -15,7 +15,7 @@
     <form method="get" action="{% url "rooms:search" %}">
         <div>
             <label for="city">City</label>
-            <input value={{city}} name="city" id="city" placeholder="Search by City" type="text">
+            <input value="{% if value %}{{value}}{% endif %}" name="city" id="city" placeholder="Search by City" type="text">
         </div>
         <div>
             <label for="country">Country</label>
@@ -125,4 +125,10 @@
         </div>
         <button>Search</button>
     </form>
+
+    <h3>Results</h3>
+
+    {% for room in rooms %}
+        <h3>{{room.name}}</h3>
+    {% endfor %}
 {% endblock content %}
