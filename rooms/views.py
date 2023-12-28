@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
 from django.http import HttpResponse
 from django_countries import countries
-from . import models
+from . import models, forms
 
 class HomeView(ListView):
     """Homeview Defintion"""
@@ -31,6 +31,16 @@ class RoomDetail(DetailView):
     pk_url_kwarg = 'pk'
 
 def search(request):
+    
+    form = forms.SearchForm()
+    
+    # print(rooms.query)
+
+    return render(request, "rooms/search.html", {
+        "form":form
+    })
+
+def search_old_working(request):
     city = request.GET.get("city", "Anywhere")
     city = str.capitalize(city)
     country = request.GET.get("country","NI")
@@ -119,7 +129,7 @@ def search(request):
     rooms = models.Room.objects.filter(**filter_args).distinct()
     # print(rooms.query)
 
-    return render(request, "rooms/search.html", {
+    return render(request, "rooms/search_old_working.html", {
         **form,
         **choices,
         "rooms": rooms
