@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, View
 from django.urls import reverse
 from django.http import Http404
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
@@ -33,7 +34,7 @@ class RoomDetail(DetailView):
 class SearchView(View):
     def get(self, request):
         country = request.GET.get("country")
-        
+
         if country:
             form = forms.SearchForm(request.GET)
             if form.is_valid():
@@ -87,7 +88,11 @@ class SearchView(View):
                 for facility in facilities:
                     filter_args['facilities'] = facility
 
-                rooms = models.Room.objects.filter(**filter_args)
+                qs = models.Room.objects.filter(**filter_args).order_by("-created")
+
+                paginator = Paginator(qs, 10, orphans=5)
+                page = request.GET.get("page", 1)
+                rooms = paginator.get_page(page)
                 return render(request, "rooms/search.html", {
                     "form": form,
                     "rooms": rooms
