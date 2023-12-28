@@ -15,7 +15,12 @@
     <form method="get" action="{% url "rooms:search" %}">
         <div>
             <label for="city">City</label>
-            <input value="{% if value %}{{value}}{% endif %}" name="city" id="city" placeholder="Search by City" type="text">
+            <input 
+                value="{% if city != "" %}{{city}}{% else %}Anywhere{% endif %}" 
+                name="city" 
+                id="city" 
+                placeholder="Search by City" 
+                type="text" />
         </div>
         <div>
             <label for="country">Country</label>
@@ -82,11 +87,11 @@
                 id="instant" />
         </div>
         <div>
-            <label for="super_host">By Superhost Onyl?</label>
-            <input {% if super_host %} checked {% endif %} 
+            <label for="superhost">By Superhost Onyl?</label>
+            <input {% if superhost %} checked {% endif %} 
                 type="checkbox" 
-                name="super_host" 
-                id="super_host" />
+                name="superhost" 
+                id="superhost" />
         </div>
         <div>
             <h3>Amenities</h3>
@@ -129,6 +134,6 @@
     <h3>Results</h3>
 
     {% for room in rooms %}
-        <h3>{{room.name}}</h3>
+        <h3>{{room.name}} {{room.id}}</h3>
     {% endfor %}
 {% endblock content %}
