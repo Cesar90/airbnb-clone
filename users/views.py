@@ -1,6 +1,7 @@
-from django.shortcuts import render
 from django.views import View
-from . import forms
+from django.shortcuts import render, redirect, reverse
+from django.contrib.auth import authenticate, login, logout
+from . import forms, models
 
 class LoginView(View):
     def get(self, request):
@@ -12,10 +13,20 @@ class LoginView(View):
     def post(self, request):
         form = forms.LoginForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password")
+            username = models.User.objects.get(email=email).username
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect(reverse("core:home"))
         return render(request,  "users/login.html", {
             "form":form
         })
+    
+def log_out(request):
+    logout(request)
+    return redirect(reverse("core:home"))
 
 # def login_view(request):
 #     if request.method == "GET":
