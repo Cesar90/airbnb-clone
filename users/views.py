@@ -33,6 +33,16 @@ class SignUpView(FormView):
         "password1": "test2"
     }
 
+    def form_valid(self, form):
+        form.save()
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
+        username = models.User.objects.get(email=email).username
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+        return super().form_valid(form)
+
     
 class LoginView_old(View):
     def get(self, request):
