@@ -21,19 +21,18 @@ class LoginView(FormView):
             login(self.request, user)
         return super().form_valid(form)
 
-    # def post(self, request):
-    #     form = forms.LoginForm(request.POST)
-    #     if form.is_valid():
-    #         email = form.cleaned_data.get("email")
-    #         password = form.cleaned_data.get("password")
-    #         username = models.User.objects.get(email=email).username
-    #         user = authenticate(request, username=username, password=password)
-    #         if user is not None:
-    #             login(request, user)
-    #             return redirect(reverse("core:home"))
-    #     return render(request,  "users/login.html", {
-    #         "form":form
-    #     })
+class SignUpView(FormView):
+    template_name = "users/signup.html"
+    form_class = forms.SignUpForm
+    success_url = reverse_lazy("core:home")
+    initial = {
+        "first_name": "Cesar",
+        "last_name": "Cordero",
+        "email": "test@test.test",
+        "password": "test",
+        "password1": "test2"
+    }
+
     
 class LoginView_old(View):
     def get(self, request):
