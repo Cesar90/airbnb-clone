@@ -41,6 +41,11 @@ class User(AbstractUser):
         max_length=3,blank=True, 
         default=CURRENCY_NIC)
     superhost = models.BooleanField(default=False)
+    email_confirmed = models.BooleanField(default=False)
+    email_secret = models.CharField(max_length=120, default="", blank=True)
 
     # def __str__(self) -> str:
     #     return super().__str__()
+
+    def verify_email(self):
+        pass

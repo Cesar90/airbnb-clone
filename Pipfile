@@ -9,6 +9,7 @@ pillow = "*"
 django-countries = "*"
 django-seed = "*"
 "psycopg2-binary" = "*"
+django-dotenv = "==1.4.2"
 
 [dev-packages]
 "flake8" = "==3.7.9"
