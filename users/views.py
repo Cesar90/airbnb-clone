@@ -1,3 +1,4 @@
+import os
 from django.http import HttpResponse
 from django.views import View
 from django.views.generic import FormView
@@ -56,6 +57,13 @@ def complete_verification(request, key):
         pass
     return redirect(reverse("core:home"))
 
+def github_login(request):
+    client_id = os.environ.get("GH_ID")
+    redirect_url = "http://127.0.0.1:8000/users/login/github/callback"
+    return redirect(f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_url}&scope=read:user")
+
+def github_callback(request):
+    pass
     
 class LoginView_old(View):
     def get(self, request):
