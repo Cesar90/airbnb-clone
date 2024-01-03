@@ -51,8 +51,11 @@ class SignUpForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get("email")
         try:
-            models.User.objects.filter(email=email)
-            raise forms.ValidationError("User already exists with email")
+            users = models.User.objects.filter(email=email)
+            if users:
+                raise forms.ValidationError("User already exists with email")
+            else:
+                return email
         except models.User.DoesNotExist:
             return email
         
