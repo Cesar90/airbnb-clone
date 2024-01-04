@@ -49,3 +49,4 @@ run seed of users => python manage.py seed_users --number 50
 run seed of rooms => python manage.py seed_rooms
 
 Install django-dotenv => pipenv install django-dotenv==1.4.2
+Install request => pipenv install requests==2.22.0
